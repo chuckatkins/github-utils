@@ -1,0 +1,22 @@
+name: 'Changed Files'
+description: 'Determine the number of changed file matching defined filters'
+author: 'Chuck Atkins <chuckatkins@gmail.com>'
+
+inputs:
+  path:
+    description: 'Path to the repository checkout'
+    required: true
+    default: ${{ github.workspace }}
+  filters:
+    description: 'YAML string defining named groups of glob patterns'
+    required: true
+
+outputs:
+  all:
+    description: 'Total number of changed files, including unmatched'
+  ci:
+    description: 'Number of changed files matching the ci group'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
