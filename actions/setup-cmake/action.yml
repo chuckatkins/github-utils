@@ -1,0 +1,83 @@
+name: Setup CMake
+description: Setup an out-of-source build with the most recent CMake
+author: Chuck Atkins <chuckatkins@gmail.com>
+
+inputs:
+  token:
+    description: GitHub token to authenticate API requests
+    required: false
+  version:
+    description: CMake version to install
+    required: true
+    default: latest
+  install_ninja:
+    description: Whether or not to install Ninja
+    required: true
+    default: true
+  source_dir:
+    description: Path to the top level CMake source directory.
+    required: true
+    default: source
+  build_dir:
+    description: Path to the build directory.
+    required: true
+    default: build
+  ci_env:
+    description: >
+      Set the `CI_SOURCE_DIR` and `CI_BUILD_DIR` environment variables.
+    required: true
+    default: true
+
+outputs:
+  cmake:
+    description: Path to the CMake executable
+    value: ${{ steps.propagate.outputs.cmake }}
+  ctest:
+    description: Path to the CTest executable
+    value: ${{ steps.propagate.outputs.ctest }}
+  cmake_source_dir:
+    description: >
+      Path to the source directory to pass to
+      `cmake -S <source_dir> -B <binary_dir>`.
+    value: ${{ steps.propagate.outputs.source_dir }}
+  cmake_binary_dir:
+    description: >
+      Path to the binary directory to pass to
+      `cmake -S <source_dir> -B <binary_dir>`.
+    value: ${{ steps.propagate.outputs.build_dir }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install CMake and Ninja into the tool-cache
+      id: install
+      uses: chuckatkins/github-utils/actions/install-cmake@add-setup-cmake
+      with:
+        token: ${{ inputs.token }}
+        version: ${{ inputs.version }}
+        install_ninja: ${{ inputs.install_ninja }}
+
+    - name: Set outputs
+      id: propagate
+      shell: bash
+      run: |
+        echo 'cmake=${{ steps.install.outputs.cmake }}' >> "${GITHUB_OUTPUT}"
+        echo 'ctest=${{ steps.install.outputs.ctest }}' >> "${GITHUB_OUTPUT}"
+        echo 'CMAKE=${{ steps.install.outputs.cmake }}' >> "${GITHUB_ENV}"
+        echo 'CTEST=${{ steps.install.outputs.ctest }}' >> "${GITHUB_ENV}"
+        if [[ ${{ inputs.install_ninja }} == true ]]
+        then
+            echo 'ninja=${{ steps.install.outputs.ninja }}' >> "${GITHUB_OUTPUT}"
+            echo 'NINJA=${{ steps.install.outputs.ninja }}' >> "${GITHUB_ENV}"
+            echo 'CMAKE_GENERATOR=Ninja' >> "${GITHUB_ENV}"
+        fi
+
+        source_dir="$(realpath -Lms "${{ inputs.source_dir }}")"
+        build_dir="$(realpath -Lms "${{ inputs.build_dir }}")"
+        echo "source_dir=${source_dir}" >> "${GITHUB_OUTPUT}"
+        echo "build_dir=${build_dir}" >> "${GITHUB_OUTPUT}"
+        if [[ ${{ inputs.ci_env }} == true ]]
+        then
+            echo "CI_SOURCE_DIR=${source_dir}" >> "${GITHUB_ENV}"
+            echo "CI_BUILD_DIR=${build_dir}" >> "${GITHUB_ENV}"
+        fi
