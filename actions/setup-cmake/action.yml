@@ -51,7 +51,7 @@ runs:
   steps:
     - name: Install CMake and Ninja into the tool-cache
       id: install
-      uses: chuckatkins/github-utils/actions/install-cmake@add-setup-cmake
+      uses: chuckatkins/github-utils/actions/install-cmake@main
       with:
         token: ${{ inputs.token }}
         version: ${{ inputs.version }}
