@@ -1,34 +1,34 @@
-name: 'Install CMake'
-description: 'Install CMake and Ninja into the tool-cache'
-author: 'Chuck Atkins <chuckatkins@gmail.com>'
+name: Install CMake
+description: Install CMake and Ninja into the tool-cache
+author: Chuck Atkins <chuckatkins@gmail.com>
 
 inputs:
   token:
-    description: 'GitHub token to authenticate API requests'
+    description: GitHub token to authenticate API requests
     required: false
   version:
-    description: 'CMake version to install.'
+    description: CMake version to install.
     required: true
-    default: 'latest'
+    default: latest
   install_ninja:
-    description: 'Install Ninja into the tool-cache.'
+    description: Install Ninja into the tool-cache.
     required: true
     default: false
   ninja_version:
-    description: 'Ninja version to install if install_ninja is enabled.'
+    description: Ninja version to install if install_ninja is enabled.
     required: true
-    default: 'latest'
+    default: latest
 
 outputs:
   cmake:
-    description: 'Full path to the cmake binary from the tool-cache'
+    description: Full path to the cmake binary from the tool-cache
   ctest:
-    description: 'Full path to the ctest binary from the tool-cache'
+    description: Full path to the ctest binary from the tool-cache
   ninja:
     description: >
       Full path to the ninja binary from the tool-cache, if
       `install_ninja=true`.
 
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: node20
+  main: dist/index.js
