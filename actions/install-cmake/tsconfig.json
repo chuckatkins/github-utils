@@ -1,11 +1,9 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "outDir": "./dist"
+    "outDir": "./lib",  // optional; unused if you only use `ncc`
+    "rootDir": "./src",
+    "typeRoots": ["../../node_modules/@types", "./node_modules/@types"]
   },
-  "exclude": ["__fixtures__", "__tests__", "coverage", "dist", "node_modules"],
   "include": ["src"]
 }
