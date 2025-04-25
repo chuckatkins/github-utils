@@ -74,12 +74,55 @@ async function gitDiffFiles(
     }))
 }
 
+async function writeSummary(
+  changedFiles: ChangedFile[],
+  groupMatches: Record<string, ChangedFile[]>
+): Promise<void> {
+  core.summary
+    .addHeading('Changed Files Summary', 2)
+    .addHeading('All Changes', 3)
+    .addRaw(`${changedFiles.length} file(s) changed.`, true)
+    .addTable([
+      [
+        { data: 'Group', header: true },
+        { data: 'Matched Files', header: true }
+      ],
+      ...Object.entries(groupMatches).map(([group, files]) => [
+        {
+          data: `<a href="#group-${group.toLowerCase()}">${group}</a>`,
+          raw: true
+        },
+        files.length.toString()
+      ])
+    ])
+    .addEOL()
+
+  for (const [group, files] of Object.entries(groupMatches)) {
+    core.summary
+      .addRaw(`<a name="group-${group.toLowerCase()}"></a>`, true)
+      .addHeading(`Group ${group}`, 3)
+
+    if (files.length > 0) {
+      core.summary.addRaw(`Matched files: ${files.length}`, true)
+
+      const diffLines = files.map(({ path, status }) => {
+        if (status === 'A') return `+ ${path}`
+        if (status === 'D') return `- ${path}`
+        return `  ${path}` // e.g. modified or renamed
+      })
+
+      core.summary.addCodeBlock(diffLines.join('\n'), 'diff')
+    }
+  }
+
+  await core.summary.write()
+}
+
 export async function run(): Promise<void> {
   try {
     const eventPath = process.env.GITHUB_EVENT_PATH!
     const eventName = process.env.GITHUB_EVENT_NAME!
     const eventData = JSON.parse(fs.readFileSync(eventPath, 'utf8'))
-    const summary = core.summary
 
     let base: string, head: string
     if (eventName === 'pull_request') {
@@ -170,42 +213,8 @@ export async function run(): Promise<void> {
 
     core.setOutput('all', changedFiles.length.toString())
 
-    await summary
-      .addHeading('Changed Files Summary', 2)
-      .addRaw(`**Total changed files:** ${changedFiles.length}`, true)
-      .addEOL()
-      .addEOL()
-      .addTable([
-        [
-          { data: 'Group', header: true },
-          { data: 'Matched Files', header: true }
-        ],
-        ...Object.entries(groupMatches).map(([group, files]) => [
-          {
-            data: `<a href="#group-${group.toLowerCase()}">${group}</a>`,
-            raw: true
-          },
-          files.length.toString()
-        ])
-      ])
-      .addEOL()
-      .write()
-
-    for (const [group, files] of Object.entries(groupMatches)) {
-      await summary
-        .addRaw(`<a name="group-${group.toLowerCase()}"></a>`, true)
-        .addEOL()
-        .addHeading(`Group ${group}`, 3)
-        .addList([
-          `Matched files: ${files.length}`,
-          ...files.map(({ path, status }) => {
-            const color =
-              status === 'A' ? 'green' : status === 'D' ? 'red' : 'orange'
-            return `<span style='color:${color}'>${path}</span>`
-          })
-        ])
-        .addEOL()
-        .write()
+    if (core.getBooleanInput('summary', { required: true})) {
+      await writeSummary(changedFiles, groupMatches)
     }
   } catch (err: any) {
     core.setFailed(err.message)

@@ -32155,12 +32155,48 @@ async function gitDiffFiles(from, to, gitDir) {
         path: rest.join(' ')
     }));
 }
+async function writeSummary(changedFiles, groupMatches) {
+    coreExports.summary
+        .addHeading('Changed Files Summary', 2)
+        .addHeading('All Changes', 3)
+        .addRaw(`${changedFiles.length} file(s) changed.`, true)
+        .addTable([
+        [
+            { data: 'Group', header: true },
+            { data: 'Matched Files', header: true }
+        ],
+        ...Object.entries(groupMatches).map(([group, files]) => [
+            {
+                data: `<a href="#group-${group.toLowerCase()}">${group}</a>`,
+                raw: true
+            },
+            files.length.toString()
+        ])
+    ])
+        .addEOL();
+    for (const [group, files] of Object.entries(groupMatches)) {
+        coreExports.summary
+            .addRaw(`<a name="group-${group.toLowerCase()}"></a>`, true)
+            .addHeading(`Group ${group}`, 3);
+        if (files.length > 0) {
+            coreExports.summary.addRaw(`Matched files: ${files.length}`, true);
+            const diffLines = files.map(({ path, status }) => {
+                if (status === 'A')
+                    return `+ ${path}`;
+                if (status === 'D')
+                    return `- ${path}`;
+                return `  ${path}`; // e.g. modified or renamed
+            });
+            coreExports.summary.addCodeBlock(diffLines.join('\n'), 'diff');
+        }
+    }
+    await coreExports.summary.write();
+}
 async function run() {
     try {
         const eventPath = process.env.GITHUB_EVENT_PATH;
         const eventName = process.env.GITHUB_EVENT_NAME;
         const eventData = JSON.parse(require$$1.readFileSync(eventPath, 'utf8'));
-        const summary = coreExports.summary;
         let base, head;
         if (eventName === 'pull_request') {
             base = eventData.pull_request.base.sha;
@@ -32240,40 +32276,8 @@ async function run() {
             coreExports.endGroup();
         }
         coreExports.setOutput('all', changedFiles.length.toString());
-        await summary
-            .addHeading('Changed Files Summary', 2)
-            .addRaw(`**Total changed files:** ${changedFiles.length}`, true)
-            .addEOL()
-            .addEOL()
-            .addTable([
-            [
-                { data: 'Group', header: true },
-                { data: 'Matched Files', header: true }
-            ],
-            ...Object.entries(groupMatches).map(([group, files]) => [
-                {
-                    data: `<a href="#group-${group.toLowerCase()}">${group}</a>`,
-                    raw: true
-                },
-                files.length.toString()
-            ])
-        ])
-            .addEOL()
-            .write();
-        for (const [group, files] of Object.entries(groupMatches)) {
-            await summary
-                .addRaw(`<a name="group-${group.toLowerCase()}"></a>`, true)
-                .addEOL()
-                .addHeading(`Group ${group}`, 3)
-                .addList([
-                `Matched files: ${files.length}`,
-                ...files.map(({ path, status }) => {
-                    const color = status === 'A' ? 'green' : status === 'D' ? 'red' : 'orange';
-                    return `<span style='color:${color}'>${path}</span>`;
-                })
-            ])
-                .addEOL()
-                .write();
+        if (coreExports.getBooleanInput('summary', { required: true })) {
+            await writeSummary(changedFiles, groupMatches);
         }
     }
     catch (err) {
