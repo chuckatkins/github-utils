@@ -1,0 +1,21 @@
+{
+  "name": "@chuckatkins/changed-files",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1",
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.0"
+  },
+  "scripts": {
+    "clean": "rm -rf lib dist",
+    "build": "tsc --project tsconfig.json",
+    "package": "ncc build src/index.ts --out dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --check .",
+    "format:fix": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --write ."
+  }
+}

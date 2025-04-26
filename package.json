@@ -1,34 +1,22 @@
 {
-  "name": "github-utils",
+  "name": "@chuckatkins/github-utils",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "actions/changed-files",
+    "actions/install-cmake",
+    "actions/ctest-build-summary"
+  ],
   "scripts": {
-    "clean": "npm run clean:all",
-    "build": "npm run build:all",
-    "package": "npm run package:all",
-    "clean:changed-files": "rm -rf actions/changed-files/{lib,dist}",
-    "build:changed-files": "tsc --project actions/changed-files",
-    "package:changed-files": "ncc build -s actions/changed-files/src/index.ts --out actions/changed-files/dist",
-    "clean:ctest-build-summary": "rm -rf actions/ctest-build-summary/{lib,dist}",
-    "build:ctest-build-summary": "tsc --project actions/ctest-build-summary",
-    "package:ctest-build-summary": "ncc build -s actions/ctest-build-summary/src/index.ts --out actions/ctest-build-summary/dist",
-    "clean:install-cmake": "rm -rf actions/install-cmake/{lib,dist}",
-    "build:install-cmake": "tsc --project actions/install-cmake",
-    "package:install-cmake": "ncc build -s actions/install-cmake/src/index.ts --out actions/install-cmake/dist",
-    "clean:all": "npm run clean:ctest-build-summary && npm run clean:install-cmake && npm run clean:ctest-build-summary",
-    "build:all": "npm run build:changed-files && npm run build:install-cmake && npm run build:ctest-build-summary",
-    "package:all": "npm run package:changed-files && npm run package:install-cmake && npm run package:ctest-build-summary",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "clean": "npm run clean --workspaces",
+    "build": "npm run build --workspaces",
+    "package": "npm run package --workspaces",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "format": "npm run format --workspaces",
+    "format:fix": "npm run format:fix --workspaces"
   },
   "devDependencies": {
-    "@actions/core": "^1.11.1",
-    "@actions/exec": "^1.1.1",
-    "@actions/github": "^6.0.0",
-    "@actions/tool-cache": "^2.0.2",
-    "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.15.2",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
@@ -37,8 +25,6 @@
     "eslint-plugin-github": "^6.0.0",
     "eslint-plugin-jsdoc": "^50.6.11",
     "eslint-plugin-prettier": "^5.2.6",
-    "fast-xml-parser": "^5.2.1",
-    "js-yaml": "^4.1.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
