@@ -1,0 +1,19 @@
+{
+  "name": "@chuckatkins/ctest-build-summary",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "fast-xml-parser": "^5.2.1"
+  },
+  "scripts": {
+    "clean": "rm -rf lib dist",
+    "build": "tsc --project tsconfig.json",
+    "package": "ncc build src/index.ts --out dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --check .",
+    "format:fix": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --write ."
+  }
+}

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./lib",  // optional; unused if you only use `ncc`
+    "outDir": "./lib", // optional; unused if you only use `ncc`
     "rootDir": "./src",
     "typeRoots": ["../../node_modules/@types", "./node_modules/@types"]
   },

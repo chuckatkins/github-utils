@@ -1,0 +1,20 @@
+{
+  "name": "@chuckatkins/install-cmake",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "@actions/tool-cache": "^2.0.2"
+  },
+  "scripts": {
+    "clean": "rm -rf lib dist",
+    "build": "tsc --project tsconfig.json",
+    "package": "ncc build src/index.ts --out dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --check .",
+    "format:fix": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --write ."
+  }
+}

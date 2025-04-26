@@ -5,13 +5,6 @@
     "allowJs": true,
     "noEmit": true
   },
-  "include": [
-    "actions/*/src/**/*.ts",
-    "eslint.config.mjs"
-  ],
-  "exclude": [
-    "**/dist",
-    "**/node_modules"
-  ]
+  "include": ["eslint.config.mjs"],
+  "exclude": ["node_modules"]
 }
-

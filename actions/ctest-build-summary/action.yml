@@ -1,0 +1,21 @@
+name: CTest Build Summary
+description: |
+  Parse a CTest Build.xml output file into a GitHub Actions job summary.
+author: Chuck Atkins <chuckatkins@gmail.com>
+inputs:
+  source_dir:
+    description:
+      Path to the source directory. Defaults to $CI_SOURCE_DIR or error.
+    required: false
+  build_dir:
+    description:
+      Path to the build directory. Defaults to $CI_BUILD_DIR or error.
+    required: false
+  format:
+    description: Format of output summary. One of tidy, raw.
+    required: false
+    default: tidy
+
+runs:
+  using: node20
+  main: dist/index.js

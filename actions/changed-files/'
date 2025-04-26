@@ -178,9 +178,7 @@ export async function run(): Promise<void> {
     core.endGroup()
 
     const filtersYaml = core.getInput('filters', { required: true })
-    const filters: Record<string, string[]> = yaml.load(
-      filtersYaml
-    ) as unknown as Record<string, string[]>
+    const filters: Record<string, string[]> = yaml.load(filtersYaml) as unknown as Record<string, string[]>
     if (!Object.prototype.hasOwnProperty.call(filters, 'ci')) {
       filters['ci'] = ['.github/**']
     }

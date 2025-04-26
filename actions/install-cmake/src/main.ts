@@ -72,12 +72,12 @@ async function getNinjaDownloadURL(version: string): Promise<AssetURL> {
     platform === 'win32'
       ? 'ninja-win.zip'
       : platform === 'linux'
-      ? 'ninja-linux.zip'
-      : platform === 'darwin'
-      ? 'ninja-mac.zip'
-      : (() => {
-          throw new Error(`Unsupported platform: ${platform}`)
-        })()
+        ? 'ninja-linux.zip'
+        : platform === 'darwin'
+          ? 'ninja-mac.zip'
+          : (() => {
+              throw new Error(`Unsupported platform: ${platform}`)
+            })()
 
   return await resolveGitHubAssetURL('ninja-build', 'ninja', version, filename)
 }
@@ -166,7 +166,11 @@ export async function run(): Promise<void> {
         )
       )
     }
-  } catch (error: any) {
-    core.setFailed(error.message)
+  } catch (err) {
+    if (err instanceof Error) {
+      core.setFailed(err.message)
+    } else {
+      core.setFailed(`Unknown error: ${err}`)
+    }
   }
 }

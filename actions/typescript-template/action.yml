@@ -1,0 +1,21 @@
+name: CHANGE_ME TypeScript Action Template CHANGE_ME
+description: CHANGE_ME My super cool GitHub action CHANGE_ME
+author: Chuck Atkins <chuckatkins@gmail.com>
+
+inputs:
+  enable_cool_feature:
+    description: Enable or disable cool feature
+    required: true
+    default: false
+  other_setting:
+    description: Some other setting
+    required: true
+    default: stuff
+
+outputs:
+  super_cool_output:
+    description: Some super cool output value from this action
+
+runs:
+  using: node20
+  main: dist/index.js
