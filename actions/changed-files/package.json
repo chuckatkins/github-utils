@@ -10,12 +10,13 @@
     "js-yaml": "^4.1.0"
   },
   "scripts": {
-    "clean": "rm -rf lib dist",
+    "clean": "../../scripts/npm/clean.sh",
+    "distclean": "npm run clean && ../../scripts/npm/distclean.sh",
     "build": "tsc --project tsconfig.json",
     "package": "ncc build src/index.ts --out dist",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "format": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --check .",
-    "format:fix": "prettier --config ../../.prettierrc.yml --ignore-path ../../.prettierignore --write ."
+    "lint": "../../scripts/npm/lint.sh .",
+    "lint:fix": "../../scripts/npm/lint.sh --fix .",
+    "format": "../../scripts/npm/format.sh --check .",
+    "format:fix": "../../scripts/npm/format.sh --write ."
   }
 }

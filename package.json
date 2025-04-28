@@ -8,7 +8,8 @@
     "actions/ctest-build-summary"
   ],
   "scripts": {
-    "clean": "npm run clean --workspaces",
+    "clean": "npm run clean --workspaces && ./scripts/npm/clean.sh",
+    "distclean": "npm run distclean --workspaces && ./scripts/npm/distclean.sh",
     "build": "npm run build --workspaces",
     "package": "npm run package --workspaces",
     "lint": "npm run lint --workspaces",
