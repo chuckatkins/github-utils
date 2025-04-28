@@ -1,7 +1,10 @@
 {
   "name": "@chuckatkins/super-cool-action",
+  "description": "Template to use when creating a new TypeScript GitHub Action",
+  "author": "Chuck Atkins <chuckatkins@gmail.com>",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "main": "dist/index.js",
   "devDependencies": {
     "@actions/core": "^1.11.1"
@@ -14,6 +17,8 @@
     "lint": "../../scripts/npm/lint.sh .",
     "lint:fix": "../../scripts/npm/lint.sh --fix .",
     "format": "../../scripts/npm/format.sh --check .",
-    "format:fix": "../../scripts/npm/format.sh --write ."
+    "format:fix": "../../scripts/npm/format.sh --write .",
+    "test": "../../scripts/npm/test.sh",
+    "test:watch": "../../scripts/npm/test.sh --watch"
   }
 }

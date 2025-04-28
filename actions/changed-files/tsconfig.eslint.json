@@ -1,5 +1,11 @@
 {
   "extends": "../../tsconfig.eslint.json",
-  "include": ["src"],
+  "include": [
+    "__fixtures__",
+    "__tests__",
+    "src",
+    "eslint.config.mjs",
+    "jest.config.mjs"
+  ],
   "exclude": ["lib", "dist", "node_modules"]
 }
