@@ -1,0 +1,281 @@
+## Build Summary
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:50](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L50)
+```
+   50 |         fputs("warning: Cannot sanitize LD_AUDIT; invalid backup buffer\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   51 |               stderr);
+      |               ~~~~~~~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:55](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L55)
+```
+   55 |         fputs("warning: Cannot sanitize LD_AUDIT; backup buffer is in use\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |               stderr);
+      |               ~~~~~~~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:69](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L69)
+```
+   69 |         fputs("warning: Cannot sanitize LD_AUDIT: failed to get path to self\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   70 |               stderr);
+      |               ~~~~~~~
+```
+
+[!WARNING] variable 'self_fname_len' is not initialized [cppcoreguidelines-init-variables]
+[src/rtld-audit/audit.c:74](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L74)
+```
+   74 |     int self_fname_len;
+      |         ^             
+      |                        = 0
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:78](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L78)
+```
+   78 |         fputs("warning: Cannot sanitize LD_AUDIT: invalid filename for self\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   79 |               stderr);
+      |               ~~~~~~~
+```
+
+[!WARNING] narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+[src/rtld-audit/audit.c:95](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L95)
+```
+   95 |         int token_fname_len = token_len - (token_fname - token);
+      |                               ^
+```
+
+[!WARNING] narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+[src/rtld-audit/audit.c:100](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L100)
+```
+  100 |             int slot_len = cursor - token;
+      |                            ^
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:121](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L121)
+```
+  121 |         fputs("warning: Cannot restore LD_AUDIT; invalid backup buffer\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  122 |               stderr);
+      |               ~~~~~~~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:126](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L126)
+```
+  126 |         fputs("warning: Cannot restore LD_AUDIT; backup buffer is not active\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  127 |               stderr);
+      |               ~~~~~~~
+```
+
+[!WARNING] parameter 'version' is unused [misc-unused-parameters]
+[src/rtld-audit/audit.c:142](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L142)
+```
+  142 | unsigned int la_version(unsigned int version) {
+      |                                      ^
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/rtld-audit/audit.c:160](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L160)
+```
+  160 |         fputs("error: Failed to locate a usable libcuda.so.1\n", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] parameter 'cookie' is unused [misc-unused-parameters]
+[src/rtld-audit/audit.c:183](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L183)
+```
+  183 | char *la_objsearch(const char *name, uintptr_t *cookie, unsigned int flag) {
+      |                                                 ^
+```
+
+[!WARNING] parameter 'flag' is unused [misc-unused-parameters]
+[src/rtld-audit/audit.c:183](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L183)
+```
+  183 | char *la_objsearch(const char *name, uintptr_t *cookie, unsigned int flag) {
+      |                                                                      ^
+```
+
+[!WARNING] do not use 'else' after 'return' [readability-else-after-return]
+[src/rtld-audit/audit.c:189](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L189)
+```
+  189 |         } else if (strcmp2(name, LIBNVIDIA_NVVM_SONAME) == 0) {
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  190 |             return libnvidia_nvvm_path;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  191 |         } else if (strcmp2(name, LIBNVIDIA_PTXJITCOMPILER_SONAME) == 0) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  192 |             return libnvidia_ptxjitcompiler_path;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  193 |         } else if (strcmp2(name, LIBCUDADEBUGGER_SONAME) == 0) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] parameter 'lmid' is unused [misc-unused-parameters]
+[src/rtld-audit/audit.c:202](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L202)
+```
+  202 | unsigned int la_objopen(struct link_map *map, Lmid_t lmid, uintptr_t *cookie) {
+      |                                                      ^
+```
+
+[!WARNING] parameter 'cookie' is unused [misc-unused-parameters]
+[src/rtld-audit/audit.c:202](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L202)
+```
+  202 | unsigned int la_objopen(struct link_map *map, Lmid_t lmid, uintptr_t *cookie) {
+      |                                                                       ^
+```
+
+[!WARNING] use of a signed integer operand with a binary bitwise operator [hicpp-signed-bitwise]
+[src/rtld-audit/audit.c:215](https://github.com/testowner/test-repo/blob/undefined/src/rtld-audit/audit.c#L215)
+```
+  215 |         return LA_FLG_BINDTO | LA_FLG_BINDFROM;
+      |                ^~~~~~~~~~~~~ ~
+```
+
+[!WARNING] narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+[src/utils/c/path_utils.c:51](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/path_utils.c#L51)
+```
+   51 |     *token_len = token_end - *token;
+      |                  ^
+```
+
+[!WARNING] narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+[src/utils/c/path_utils.c:78](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/path_utils.c#L78)
+```
+   78 |     return match ? match - path : -1;
+      |                          ^
+```
+
+[!WARNING] variable 'cur' is not initialized [cppcoreguidelines-init-variables]
+[src/utils/c/path_utils.c:124](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/path_utils.c#L124)
+```
+  124 |     const char *cur;
+      |                 ^  
+      |                     = NULL
+```
+
+[!WARNING] variable 'cur' is not initialized [cppcoreguidelines-init-variables]
+[src/utils/c/path_utils.c:141](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/path_utils.c#L141)
+```
+  141 |     const char *cur;
+      |                 ^  
+      |                     = NULL
+```
+
+[!WARNING] narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+[src/utils/c/path_utils.c:150](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/path_utils.c#L150)
+```
+  150 |         *filename_len = cur - filename;
+      |                         ^
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/utils/c/search_helper.c:31](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L31)
+```
+   31 |         fputs("error: Failed to get path to self\n", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] calling 'popen' uses a command processor [cert-env33-c]
+[src/utils/c/search_helper.c:86](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L86)
+```
+   86 |     FILE *pipe = popen(search_helper_path, "r");
+      |                  ^
+```
+
+[!WARNING] variable 'bytes_read' is not initialized [cppcoreguidelines-init-variables]
+[src/utils/c/search_helper.c:93](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L93)
+```
+   93 |     size_t bytes_read;
+      |            ^         
+      |                       = 0
+```
+
+[!WARNING] variable 'eod' is not initialized [cppcoreguidelines-init-variables]
+[src/utils/c/search_helper.c:98](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L98)
+```
+   98 |         void *eod;
+      |               ^  
+      |                   = NULL
+```
+
+[!WARNING] an assignment within an 'if' condition is bug-prone [bugprone-assignment-in-if-condition]
+[!NOTE] if it should be an assignment, move it out of the 'if' condition
+[!NOTE] if it is meant to be an equality check, change '=' to '=='
+[src/utils/c/search_helper.c:99](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L99)
+```
+   99 |         if ((eod = memchr(buf_cur, '\0', bytes_read)) ||
+      |              ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] an assignment within an 'if' condition is bug-prone [bugprone-assignment-in-if-condition]
+[!NOTE] if it should be an assignment, move it out of the 'if' condition
+[!NOTE] if it is meant to be an equality check, change '=' to '=='
+[src/utils/c/search_helper.c:100](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L100)
+```
+  100 |             (eod = memchr(buf_cur, '\n', bytes_read))) {
+      |              ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/utils/c/search_helper.c:113](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L113)
+```
+  113 |         fputs("error: ", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/utils/c/search_helper.c:114](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L114)
+```
+  114 |         fputs(strerror(errno), stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/utils/c/search_helper.c:115](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L115)
+```
+  115 |         fputc('\n', stderr);
+      |         ^~~~~~~~~~~~~~~~~~~
+```
+
+[!WARNING] do not use 'else' after 'return' [readability-else-after-return]
+[src/utils/c/search_helper.c:118](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L118)
+```
+  118 |     } else if (ret != 0) {
+      |       ^~~~~~~~~~~~~~~~~~~~
+  119 |         fputs("error: Search helper failed\n", stderr);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  120 |         memset(out_path, 0, PATH_MAX);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  121 |         return 0;
+      |         ~~~~~~~~~
+  122 |     }
+      |     ~
+```
+
+[!WARNING] the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+[!NOTE] cast the expression to void to silence this warning
+[src/utils/c/search_helper.c:119](https://github.com/testowner/test-repo/blob/undefined/src/utils/c/search_helper.c#L119)
+```
+  119 |         fputs("error: Search helper failed\n", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
