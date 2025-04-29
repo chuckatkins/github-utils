@@ -12,9 +12,9 @@ inputs:
       Path to the build directory. Defaults to $CI_BUILD_DIR or error.
     required: false
   format:
-    description: Format of output summary. One of tidy, raw.
+    description: Format of output summary. One of tidy, iwyu, or raw.
     required: false
-    default: tidy
+    default: raw
 
 runs:
   using: node20

@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.eslint.json",
+  "include": ["src", "__fixtures__", "__tests__"]
+}

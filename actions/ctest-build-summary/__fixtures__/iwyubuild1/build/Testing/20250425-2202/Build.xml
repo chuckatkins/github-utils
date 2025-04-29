@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="ci-ctest-build-summary_test-ctest-build-summary"
+	BuildStamp="20250425-2202-Continuous"
+	Name="iridium"
+	Generator="ctest-3.30.8"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="iridium"
+	OSRelease="6.13.5-200.fc41.x86_64"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Thu Feb 27 15:07:31 UTC 2025"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="8191"
+	TotalPhysicalMemory="31652"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1979.46"
+	>
+	<Build>
+		<StartDateTime>Apr 25 18:03 EDT</StartDateTime>
+		<StartBuildTime>1745618582</StartBuildTime>
+		<BuildCommand>/usr/bin/cmake --build . --config "Debug"</BuildCommand>
+		<Warning>
+			<BuildLogLine>6</BuildLogLine>
+			<Text>Warning: include-what-you-use reported diagnostics:</Text>
+			<PreContext>Change Dir: '/.../build'
+
+Run Build Command(s): /usr/bin/ninja-build -v
+[1/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --iwyu="/usr/bin/include-what-you-use;-Xiwyu;--mapping_file=/.../source/.iwyu-mappings.imp;--driver-mode=gcc" -- /usr/bin/clang  -I/.../build/src/utils/version -I/.../source/src/utils/common -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_version.dir/version/version.c.o -MF src/utils/CMakeFiles/utils_version.dir/version/version.c.o.d -o src/utils/CMakeFiles/utils_version.dir/version/version.c.o -c /.../source/src/utils/version/version.c
+[2/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --iwyu="/usr/bin/include-what-you-use;-Xiwyu;--mapping_file=/.../source/.iwyu-mappings.imp;--driver-mode=gcc" -- /usr/bin/clang -D_GNU_SOURCE -I/.../source/src/utils/c -I/.../source/src/utils/common -I/.../build/src/utils/version -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o -MF src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o.d -o src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o -c /.../source/src/utils/c/path_utils.c
+</PreContext>
+			<PostContext>
+/.../source/src/utils/c/path_utils.h should add these lines:
+
+/.../source/src/utils/c/path_utils.h should remove these lines:
+- #include &lt;stdio.h&gt;  // lines 22-22
+- #include &lt;string.h&gt;  // lines 21-21
+
+The full include-list for /.../source/src/utils/c/path_utils.h:
+#include &lt;limits.h&gt;   // for PATH_MAX
+#include &lt;stdbool.h&gt;  // for bool</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>23</BuildLogLine>
+			<Text>Warning: include-what-you-use reported diagnostics:</Text>
+			<PreContext>---
+
+(/.../source/src/utils/c/path_utils.c has correct #includes/fwd-decls)
+
+[3/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --iwyu="/usr/bin/include-what-you-use;-Xiwyu;--mapping_file=/.../source/.iwyu-mappings.imp;--driver-mode=gcc" -- /usr/bin/clang -D_GNU_SOURCE -I/.../source/src/utils/c -I/.../source/src/utils/common -I/.../build/src/utils/version -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o -MF src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o.d -o src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o -c /.../source/src/utils/c/search_helper.c
+[4/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --iwyu="/usr/bin/include-what-you-use;-Xiwyu;--mapping_file=/.../source/.iwyu-mappings.imp;--driver-mode=gcc" -- /usr/bin/clang -D_GNU_SOURCE -Dautocompat_audit_EXPORTS -I/.../source/src/utils/common -I/.../build/src/utils/version -I/.../source/src/utils/c -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o -MF src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o.d -o src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o -c /.../source/src/rtld-audit/audit.c
+</PreContext>
+			<PostContext>
+/.../source/src/rtld-audit/audit.c should add these lines:
+#include &lt;dlfcn.h&gt;          // for Lmid_t
+#include &lt;stdint.h&gt;         // for uintptr_t
+#include &lt;string.h&gt;         // for memset, strncmp, memcpy, memmove, strlen
+
+/.../source/src/rtld-audit/audit.c should remove these lines:
+- #include &lt;stdbool.h&gt;  // lines 18-18
+- #include "version.h"  // lines 25-25
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Log Encoding="base64" Compression="bin/gzip"/>
+		<EndDateTime>Apr 25 18:03 EDT</EndDateTime>
+		<EndBuildTime>1745618584</EndBuildTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Build>
+</Site>

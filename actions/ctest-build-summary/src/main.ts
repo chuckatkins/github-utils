@@ -6,11 +6,24 @@ import * as path from 'path'
 import { XMLParser } from 'fast-xml-parser'
 
 interface BuildIssue {
-  type: 'error' | 'warning' | 'note'
+  isError: boolean
   text: string
   sourceFile?: string
   sourceLine?: number
   postContext?: string
+}
+
+type SummaryAlert = {
+  type: 'NOTE' | 'TIP' | 'IMPORTANT' | 'WARNING' | 'CRITICAL'
+  text: string
+}
+
+type SummaryIssue = {
+  headers: SummaryAlert[]
+  sourceFile?: string
+  sourceLine?: number
+  messageType?: string
+  message?: string
 }
 
 function getInputOrEnv(input: string, envVar: string): string {
@@ -43,42 +56,124 @@ function findMostRecentTestingDir(buildDir: string): string {
   return path.join(testingPath, subdirs[subdirs.length - 1])
 }
 
-async function summarizeTidy(
-  issues: BuildIssue[],
-  sourceDir: string
-): Promise<void> {
-  let lastMainIssue: BuildIssue | undefined
-
-  for (const issue of issues) {
-    if (issue.type === 'error' || issue.type === 'warning') {
-      const heading = issue.type === 'error' ? 'ERROR' : 'WARNING'
-      await summary.addHeading(`[!${heading}] ${issue.text}`, 3)
-
-      if (issue.sourceFile && issue.sourceLine) {
-        const relPath = path.relative(sourceDir, issue.sourceFile)
-        const repo = github.context.repo
-        const url = `https://github.com/${repo.owner}/${repo.repo}/blob/${github.context.sha}/${relPath}#L${issue.sourceLine}`
-        await summary.addLink(`${relPath}:${issue.sourceLine}`, url)
-        await summary.addEOL()
-      }
-
-      lastMainIssue = issue
-
-      if (issue.postContext) {
-        await summary.addCodeBlock(issue.postContext, 'diff')
-      }
-    } else if (issue.type === 'note' && lastMainIssue) {
-      await summary.addHeading(`[!NOTE] ${issue.text}`, 4)
+function summaryWriteIssue(issue: SummaryIssue) {
+  summary.addEOL()
+  for (const header of issue.headers) {
+    summary.addRaw(`[!${header.type}] ${header.text}`)
+    summary.addEOL()
+  }
+  if (issue.sourceFile) {
+    const repo = github.context.repo
+    let linkUrl = `https://github.com/${repo.owner}/${repo.repo}/blob/${github.context.sha}/${issue.sourceFile}`
+    let linkText = issue.sourceFile
+    if (issue.sourceLine) {
+      linkUrl += `#L${issue.sourceLine}`
+      linkText += `:${issue.sourceLine}`
     }
+    summary.addRaw(`[${linkText}](${linkUrl})`)
+    summary.addEOL()
+  }
+  if (issue.message) {
+    if (issue.messageType) {
+      summary.addRaw('```${issue.messageType}')
+    } else {
+      summary.addRaw('```')
+    }
+    summary.addEOL()
+    summary.addRaw(issue.message)
+    summary.addEOL()
+    summary.addRaw('```')
+    summary.addEOL()
   }
 }
 
-async function summarizeRaw(issues: BuildIssue[]): Promise<void> {
-  for (const issue of issues) {
-    await summary.addHeading(`[${issue.type.toUpperCase()}] ${issue.text}`, 3)
-    if (issue.postContext) {
-      await summary.addCodeBlock(issue.postContext, 'diff')
+function reStickyMatch(re: RegExp, str: string): RegExpExecArray | null {
+  re.lastIndex = 0
+  return re.exec(str)
+}
+
+function summarizeTidy(buildIssues: BuildIssue[]) {
+  let summaryIssue: SummaryIssue | undefined
+
+  let alertType = (txt: string) => {
+    if (txt == 'warning') return 'WARNING'
+    if (txt == 'error') return 'CRITICAL'
+    if (txt == 'note') return 'NOTE'
+    return 'IMPORTANT'
+  }
+
+  const textRe = /([^ ]+: )?((\w+): )(.*)/y
+  let generateAlert = (issue: BuildIssue): SummaryAlert => {
+    if (issue.text) {
+      textRe.lastIndex = 0
+      const textMatch = reStickyMatch(textRe, issue.text)
+      if (textMatch) {
+        return { type: alertType(textMatch[3]), text: textMatch[4] }
+      }
+      return { type: issue.isError ? 'CRITICAL' : 'WARNING', text: issue.text }
     }
+    return { type: issue.isError ? 'CRITICAL' : 'WARNING', text: '' }
+  }
+
+  let contextLineRe = /( +(\d+ )?\|[^\n]*\n?)+/y
+  let cleanupPostContext = (postContext: string | undefined) => {
+    if (!postContext) {
+      return postContext
+    }
+    const match = reStickyMatch(contextLineRe, postContext)
+    return match ? match[0].trimEnd() : undefined
+  }
+
+  for (const buildIssue of buildIssues) {
+    const currentAlert = generateAlert(buildIssue)
+    if (!summaryIssue) {
+      summaryIssue = {
+        headers: [currentAlert],
+        sourceFile: buildIssue.sourceFile,
+        sourceLine: buildIssue.sourceLine,
+        message: cleanupPostContext(buildIssue.postContext)
+      }
+    } else {
+      if (
+        currentAlert.type == 'NOTE' &&
+        summaryIssue.sourceFile &&
+        buildIssue.sourceFile &&
+        summaryIssue.sourceFile == buildIssue.sourceFile &&
+        summaryIssue.sourceLine &&
+        buildIssue.sourceLine &&
+        summaryIssue.sourceLine == buildIssue.sourceLine
+      ) {
+        summaryIssue.headers.push(currentAlert)
+      } else {
+        summaryWriteIssue(summaryIssue)
+        summaryIssue = {
+          headers: [currentAlert],
+          sourceFile: buildIssue.sourceFile,
+          sourceLine: buildIssue.sourceLine,
+          message: cleanupPostContext(buildIssue.postContext)
+        }
+      }
+    }
+  }
+
+  if (summaryIssue) {
+    summaryWriteIssue(summaryIssue)
+  }
+}
+
+function summarizeRaw(buildIssues: BuildIssue[]) {
+  for (const buildIssue of buildIssues) {
+    summaryWriteIssue({
+      headers: [
+        {
+          type: buildIssue.isError ? 'CRITICAL' : 'WARNING',
+          text: buildIssue.text
+        }
+      ],
+      sourceFile: buildIssue.sourceFile,
+      sourceLine: buildIssue.sourceLine,
+      message: buildIssue.postContext
+    })
   }
 }
 
@@ -87,6 +182,9 @@ export async function run(): Promise<void> {
     const sourceDir = getInputOrEnv('source_dir', 'CI_SOURCE_DIR')
     const buildDir = getInputOrEnv('build_dir', 'CI_BUILD_DIR')
     const format = core.getInput('format') || 'tidy'
+    core.info(`sourceDir=${sourceDir}`)
+    core.info(`buildDir=${buildDir}`)
+    core.info(`format=${format}`)
 
     const mostRecentTestingDir = findMostRecentTestingDir(buildDir)
     const buildXmlPath = path.join(mostRecentTestingDir, 'Build.xml')
@@ -96,45 +194,42 @@ export async function run(): Promise<void> {
     }
 
     const buildXmlContent = fs.readFileSync(buildXmlPath, 'utf-8')
-    const parser = new XMLParser({ ignoreAttributes: false })
+    const parser = new XMLParser({ ignoreAttributes: false, trimValues: false })
     const parsed = parser.parse(buildXmlContent)
 
     const buildIssues: BuildIssue[] = []
 
-    const buildTest = parsed.Site?.Testing?.BuildTest
-    if (!buildTest || !buildTest.BuildLog) {
-      core.warning('No BuildTest/BuildLog entries found')
+    const buildElement = parsed.Site?.Build
+    if (!buildElement) {
+      throw new Error('No Build elements found')
     } else {
-      const entries = Array.isArray(buildTest.BuildLog)
-        ? buildTest.BuildLog
-        : [buildTest.BuildLog]
-
-      for (const entry of entries) {
-        const typeAttr = entry['@_Type']?.toLowerCase()
-        if (!typeAttr) continue
-        const type =
-          typeAttr === 'warning' || typeAttr === 'error' || typeAttr === 'note'
-            ? typeAttr
-            : 'note'
-
-        buildIssues.push({
-          type,
-          text: entry.Text?.['#text'] || '(no text)',
-          sourceFile: entry.SourceFile,
-          sourceLine: entry.SourceLineNumber
-            ? parseInt(entry.SourceLineNumber)
-            : undefined,
-          postContext: entry.PostContext?.['#text']
-        })
+      const builds = Array.isArray(buildElement) ? buildElement : [buildElement]
+      for (const build of builds) {
+        for (const [key, value] of Object.entries(build)) {
+          if (key === 'Warning' || key === 'Error') {
+            const isError = key == 'Error'
+            const items = Array.isArray(value) ? value : [value]
+            for (const item of items) {
+              buildIssues.push({
+                isError: isError,
+                text: item.Text ?? '(no text)',
+                sourceFile: item.SourceFile ?? undefined,
+                sourceLine: item.SourceLineNumber ?? undefined,
+                postContext: item.PostContext ?? undefined
+              })
+            }
+          }
+        }
       }
     }
 
-    await summary.addHeading('Build Summary', 2)
+    summary.addRaw('## Build Summary')
+    summary.addEOL()
 
     if (format === 'tidy') {
-      await summarizeTidy(buildIssues, sourceDir)
+      summarizeTidy(buildIssues)
     } else {
-      await summarizeRaw(buildIssues)
+      summarizeRaw(buildIssues)
     }
 
     await summary.write()

@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="ci-ctest-build-summary_test-ctest-build-summary"
+	BuildStamp="20250425-1648-Continuous"
+	Name="iridium"
+	Generator="ctest-3.30.8"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="iridium"
+	OSRelease="6.13.5-200.fc41.x86_64"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Thu Feb 27 15:07:31 UTC 2025"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="8191"
+	TotalPhysicalMemory="31652"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="400"
+	>
+	<Build>
+		<StartDateTime>Apr 25 12:49 EDT</StartDateTime>
+		<StartBuildTime>1745599742</StartBuildTime>
+		<BuildCommand>/usr/bin/cmake --build . --config "Debug"</BuildCommand>
+		<Warning>
+			<BuildLogLine>6</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:50:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>50</SourceLineNumber>
+			<PreContext>Change Dir: '/.../build'
+
+Run Build Command(s): /usr/bin/ninja-build -v
+[1/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=gcc;--export-fixes=/.../build/clang-tidy-fixes/src/utils/CMakeFiles/utils_version.dir/version/version.c.o.yaml" --source=/.../source/src/utils/version/version.c -- /usr/bin/clang  -I/.../build/src/utils/version -I/.../source/src/utils/common -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_version.dir/version/version.c.o -MF src/utils/CMakeFiles/utils_version.dir/version/version.c.o.d -o src/utils/CMakeFiles/utils_version.dir/version/version.c.o -c /.../source/src/utils/version/version.c
+[2/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=gcc;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o.yaml" --source=/.../source/src/rtld-audit/audit.c -- /usr/bin/clang -D_GNU_SOURCE -Dautocompat_audit_EXPORTS -I/.../source/src/utils/common -I/.../build/src/utils/version -I/.../source/src/utils/c -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o -MF src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o.d -o src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o -c /.../source/src/rtld-audit/audit.c
+</PreContext>
+			<PostContext>   50 |         fputs("warning: Cannot sanitize LD_AUDIT; invalid backup buffer\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   51 |               stderr);
+      |               ~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>11</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:50:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>50</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>12</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:55:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>55</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   55 |         fputs("warning: Cannot sanitize LD_AUDIT; backup buffer is in use\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |               stderr);
+      |               ~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>17</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:55:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>55</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>18</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:69:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>69</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   69 |         fputs("warning: Cannot sanitize LD_AUDIT: failed to get path to self\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   70 |               stderr);
+      |               ~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>23</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:69:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>69</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>24</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:74:9: warning: variable 'self_fname_len' is not initialized [cppcoreguidelines-init-variables]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>74</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   74 |     int self_fname_len;
+      |         ^             
+      |                        = 0
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>28</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:78:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>78</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   78 |         fputs("warning: Cannot sanitize LD_AUDIT: invalid filename for self\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   79 |               stderr);
+      |               ~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>33</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:78:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>78</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>34</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:95:31: warning: narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>95</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   95 |         int token_fname_len = token_len - (token_fname - token);
+      |                               ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>37</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:100:28: warning: narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>100</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  100 |             int slot_len = cursor - token;
+      |                            ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>40</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:121:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>121</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  121 |         fputs("warning: Cannot restore LD_AUDIT; invalid backup buffer\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  122 |               stderr);
+      |               ~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>45</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:121:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>121</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>46</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:126:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>126</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  126 |         fputs("warning: Cannot restore LD_AUDIT; backup buffer is not active\n",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  127 |               stderr);
+      |               ~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>51</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:126:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>126</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>52</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:142:38: warning: parameter 'version' is unused [misc-unused-parameters]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>142</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  142 | unsigned int la_version(unsigned int version) {
+      |                                      ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>55</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:160:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>160</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  160 |         fputs("error: Failed to locate a usable libcuda.so.1\n", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>58</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:160:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>160</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>59</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:183:49: warning: parameter 'cookie' is unused [misc-unused-parameters]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>183</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  183 | char *la_objsearch(const char *name, uintptr_t *cookie, unsigned int flag) {
+      |                                                 ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>62</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:183:70: warning: parameter 'flag' is unused [misc-unused-parameters]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>183</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  183 | char *la_objsearch(const char *name, uintptr_t *cookie, unsigned int flag) {
+      |                                                                      ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>65</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:189:11: warning: do not use 'else' after 'return' [readability-else-after-return]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>189</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  189 |         } else if (strcmp2(name, LIBNVIDIA_NVVM_SONAME) == 0) {
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  190 |             return libnvidia_nvvm_path;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  191 |         } else if (strcmp2(name, LIBNVIDIA_PTXJITCOMPILER_SONAME) == 0) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  192 |             return libnvidia_ptxjitcompiler_path;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  193 |         } else if (strcmp2(name, LIBCUDADEBUGGER_SONAME) == 0) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>80</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:202:54: warning: parameter 'lmid' is unused [misc-unused-parameters]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>202</SourceLineNumber>
+			<PreContext>  194 |             return libcudadebugger_path;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  195 |         }
+      |         ~
+</PreContext>
+			<PostContext>  202 | unsigned int la_objopen(struct link_map *map, Lmid_t lmid, uintptr_t *cookie) {
+      |                                                      ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>83</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:202:71: warning: parameter 'cookie' is unused [misc-unused-parameters]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>202</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  202 | unsigned int la_objopen(struct link_map *map, Lmid_t lmid, uintptr_t *cookie) {
+      |                                                                       ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>86</BuildLogLine>
+			<Text>/.../source/src/rtld-audit/audit.c:215:16: warning: use of a signed integer operand with a binary bitwise operator [hicpp-signed-bitwise]</Text>
+			<SourceFile>src/rtld-audit/audit.c</SourceFile>
+			<SourceLineNumber>215</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  215 |         return LA_FLG_BINDTO | LA_FLG_BINDFROM;
+      |                ^~~~~~~~~~~~~ ~
+[3/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=gcc;--export-fixes=/.../build/clang-tidy-fixes/src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o.yaml" --source=/.../source/src/utils/c/path_utils.c -- /usr/bin/clang -D_GNU_SOURCE -I/.../source/src/utils/c -I/.../source/src/utils/common -I/.../build/src/utils/version -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o -MF src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o.d -o src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o -c /.../source/src/utils/c/path_utils.c
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>90</BuildLogLine>
+			<Text>/.../source/src/utils/c/path_utils.c:51:18: warning: narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]</Text>
+			<SourceFile>src/utils/c/path_utils.c</SourceFile>
+			<SourceLineNumber>51</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   51 |     *token_len = token_end - *token;
+      |                  ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>93</BuildLogLine>
+			<Text>/.../source/src/utils/c/path_utils.c:78:26: warning: narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]</Text>
+			<SourceFile>src/utils/c/path_utils.c</SourceFile>
+			<SourceLineNumber>78</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   78 |     return match ? match - path : -1;
+      |                          ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>96</BuildLogLine>
+			<Text>/.../source/src/utils/c/path_utils.c:124:17: warning: variable 'cur' is not initialized [cppcoreguidelines-init-variables]</Text>
+			<SourceFile>src/utils/c/path_utils.c</SourceFile>
+			<SourceLineNumber>124</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  124 |     const char *cur;
+      |                 ^  
+      |                     = NULL
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>100</BuildLogLine>
+			<Text>/.../source/src/utils/c/path_utils.c:141:17: warning: variable 'cur' is not initialized [cppcoreguidelines-init-variables]</Text>
+			<SourceFile>src/utils/c/path_utils.c</SourceFile>
+			<SourceLineNumber>141</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  141 |     const char *cur;
+      |                 ^  
+      |                     = NULL
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>104</BuildLogLine>
+			<Text>/.../source/src/utils/c/path_utils.c:150:25: warning: narrowing conversion from 'long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]</Text>
+			<SourceFile>src/utils/c/path_utils.c</SourceFile>
+			<SourceLineNumber>150</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  150 |         *filename_len = cur - filename;
+      |                         ^
+[4/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/cc-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=gcc;--export-fixes=/.../build/clang-tidy-fixes/src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o.yaml" --source=/.../source/src/utils/c/search_helper.c -- /usr/bin/clang -D_GNU_SOURCE -I/.../source/src/utils/c -I/.../source/src/utils/common -I/.../build/src/utils/version -g -std=gnu11 -fPIC -fvisibility=hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o -MF src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o.d -o src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o -c /.../source/src/utils/c/search_helper.c
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>108</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:31:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>31</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   31 |         fputs("error: Failed to get path to self\n", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>111</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:31:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>31</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>112</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:86:18: warning: calling 'popen' uses a command processor [cert-env33-c]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>86</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   86 |     FILE *pipe = popen(search_helper_path, "r");
+      |                  ^
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>115</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:93:12: warning: variable 'bytes_read' is not initialized [cppcoreguidelines-init-variables]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>93</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   93 |     size_t bytes_read;
+      |            ^         
+      |                       = 0
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>119</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:98:15: warning: variable 'eod' is not initialized [cppcoreguidelines-init-variables]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>98</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   98 |         void *eod;
+      |               ^  
+      |                   = NULL
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>123</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:99:18: warning: an assignment within an 'if' condition is bug-prone [bugprone-assignment-in-if-condition]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>99</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   99 |         if ((eod = memchr(buf_cur, '\0', bytes_read)) ||
+      |              ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>126</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:99:18: note: if it should be an assignment, move it out of the 'if' condition</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>99</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>127</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:99:18: note: if it is meant to be an equality check, change '=' to '=='</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>99</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>128</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:100:18: warning: an assignment within an 'if' condition is bug-prone [bugprone-assignment-in-if-condition]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>100</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  100 |             (eod = memchr(buf_cur, '\n', bytes_read))) {
+      |              ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>131</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:100:18: note: if it should be an assignment, move it out of the 'if' condition</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>100</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>132</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:100:18: note: if it is meant to be an equality check, change '=' to '=='</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>100</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>133</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:113:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>113</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  113 |         fputs("error: ", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>136</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:113:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>113</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>137</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:114:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>114</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  114 |         fputs(strerror(errno), stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>140</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:114:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>114</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>141</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:115:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>115</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  115 |         fputc('\n', stderr);
+      |         ^~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>144</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:115:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>115</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext></PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>145</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:118:7: warning: do not use 'else' after 'return' [readability-else-after-return]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>118</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  118 |     } else if (ret != 0) {
+      |       ^~~~~~~~~~~~~~~~~~~~
+  119 |         fputs("error: Search helper failed\n", stderr);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  120 |         memset(out_path, 0, PATH_MAX);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  121 |         return 0;
+      |         ~~~~~~~~~
+  122 |     }
+      |     ~</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>156</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:119:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>119</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>  119 |         fputs("error: Search helper failed\n", stderr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>159</BuildLogLine>
+			<Text>/.../source/src/utils/c/search_helper.c:119:9: note: cast the expression to void to silence this warning</Text>
+			<SourceFile>src/utils/c/search_helper.c</SourceFile>
+			<SourceLineNumber>119</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>[5/15] : &amp;&amp; /.../build/cc-launcher /usr/bin/clang -fPIC -g  -Wl,--gc-sections -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -Wl,--no-copy-dt-needed-entries -shared -Wl,-soname,libcuda_autocompat_audit.so -o lib64/libcuda_autocompat_audit.so src/utils/CMakeFiles/utils_version.dir/version/version.c.o src/utils/CMakeFiles/utils_c.dir/c/path_utils.c.o src/utils/CMakeFiles/utils_c.dir/c/search_helper.c.o src/CMakeFiles/autocompat_audit.dir/rtld-audit/audit.c.o   &amp;&amp; :
+[6/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/autocompat_search.dir/search/main.cxx.o.yaml" --source=/.../source/src/search/main.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/common -I/.../build/src/utils/version -I/.../source/src/utils/cpp -g -std=gnu++20 -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/autocompat_search.dir/search/main.cxx.o -MF src/CMakeFiles/autocompat_search.dir/search/main.cxx.o.d -o src/CMakeFiles/autocompat_search.dir/search/main.cxx.o -c /.../source/src/search/main.cxx
+[7/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/autocompat_search.dir/search/init.cxx.o.yaml" --source=/.../source/src/search/init.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/common -I/.../build/src/utils/version -I/.../source/src/utils/cpp -g -std=gnu++20 -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/autocompat_search.dir/search/init.cxx.o -MF src/CMakeFiles/autocompat_search.dir/search/init.cxx.o.d -o src/CMakeFiles/autocompat_search.dir/search/init.cxx.o -c /.../source/src/search/init.cxx
+[8/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/autocompat_search.dir/search/parse_args.cxx.o.yaml" --source=/.../source/src/search/parse_args.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/common -I/.../build/src/utils/version -I/.../source/src/utils/cpp -g -std=gnu++20 -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/autocompat_search.dir/search/parse_args.cxx.o -MF src/CMakeFiles/autocompat_search.dir/search/parse_args.cxx.o.d -o src/CMakeFiles/autocompat_search.dir/search/parse_args.cxx.o -c /.../source/src/search/parse_args.cxx
+[9/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/utils/CMakeFiles/utils_cpp.dir/cpp/dl_library.cxx.o.yaml" --source=/.../source/src/utils/cpp/dl_library.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/cpp -I/.../source/src/utils/common -g -std=gnu++20 -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/utils/CMakeFiles/utils_cpp.dir/cpp/dl_library.cxx.o -MF src/utils/CMakeFiles/utils_cpp.dir/cpp/dl_library.cxx.o.d -o src/utils/CMakeFiles/utils_cpp.dir/cpp/dl_library.cxx.o -c /.../source/src/utils/cpp/dl_library.cxx
+[10/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/cudart_cudaSetDevice.dir/examples/cudart_cudaSetDevice.cxx.o.yaml" --source=/.../source/src/examples/cudart_cudaSetDevice.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/cpp -I/.../source/src/utils/common -g -std=gnu++20 -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/cudart_cudaSetDevice.dir/examples/cudart_cudaSetDevice.cxx.o -MF src/CMakeFiles/cudart_cudaSetDevice.dir/examples/cudart_cudaSetDevice.cxx.o.d -o src/CMakeFiles/cudart_cudaSetDevice.dir/examples/cudart_cudaSetDevice.cxx.o -c /.../source/src/examples/cudart_cudaSetDevice.cxx
+[11/15] : &amp;&amp; /.../build/c++-launcher /usr/bin/clang++ -g -Wl,--gc-sections -static-libstdc++ -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -Wl,--no-copy-dt-needed-entries src/utils/CMakeFiles/utils_cpp.dir/cpp/dl_library.cxx.o src/CMakeFiles/cudart_cudaSetDevice.dir/examples/cudart_cudaSetDevice.cxx.o -o bin/cudart_cudaSetDevice   &amp;&amp; :
+[12/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/cuda_cuInit.dir/examples/cuda_cuInit.cxx.o.yaml" --source=/.../source/src/examples/cuda_cuInit.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/cpp -I/.../source/src/utils/common -g -std=gnu++20 -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/cuda_cuInit.dir/examples/cuda_cuInit.cxx.o -MF src/CMakeFiles/cuda_cuInit.dir/examples/cuda_cuInit.cxx.o.d -o src/CMakeFiles/cuda_cuInit.dir/examples/cuda_cuInit.cxx.o -c /.../source/src/examples/cuda_cuInit.cxx
+[13/15] : &amp;&amp; /.../build/c++-launcher /usr/bin/clang++ -g -Wl,--gc-sections -static-libstdc++ -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -Wl,--no-copy-dt-needed-entries src/utils/CMakeFiles/utils_cpp.dir/cpp/dl_library.cxx.o src/CMakeFiles/cuda_cuInit.dir/examples/cuda_cuInit.cxx.o -o bin/cuda_cuInit   &amp;&amp; :
+[14/15] /usr/bin/cmake -E __run_co_compile --launcher=/.../build/c++-launcher --tidy="/usr/bin/clang-tidy;--extra-arg-before=--driver-mode=g++;--export-fixes=/.../build/clang-tidy-fixes/src/CMakeFiles/autocompat_search.dir/search/search.cxx.o.yaml" --source=/.../source/src/search/search.cxx -- /usr/bin/clang++ -D_GLIBCXX_ASSERTIONS -I/.../source/src/utils/common -I/.../build/src/utils/version -I/.../source/src/utils/cpp -g -std=gnu++20 -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -Werror -Wall -Wpedantic -ffunction-sections -fdata-sections -fno-exceptions -fstack-protector-all -fstack-clash-protection -fstrict-flex-arrays=3 -fno-delete-null-pointer-checks -fcf-protection=full -MD -MT src/CMakeFiles/autocompat_search.dir/search/search.cxx.o -MF src/CMakeFiles/autocompat_search.dir/search/search.cxx.o.d -o src/CMakeFiles/autocompat_search.dir/search/search.cxx.o -c /.../source/src/search/search.cxx</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Log Encoding="base64" Compression="bin/gzip"/>
+		<EndDateTime>Apr 25 12:49 EDT</EndDateTime>
+		<EndBuildTime>1745599768</EndBuildTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Build>
+</Site>
