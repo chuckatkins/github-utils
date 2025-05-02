@@ -1,5 +1,5 @@
-coverage/
+.DS_Store
+.licenses/
 dist/
-lib/
-linter/
 node_modules/
+coverage/

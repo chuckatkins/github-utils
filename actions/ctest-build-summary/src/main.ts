@@ -95,7 +95,7 @@ function reStickyMatch(re: RegExp, str: string): RegExpExecArray | null {
 function summarizeTidy(buildIssues: BuildIssue[]) {
   let summaryIssue: SummaryIssue | undefined
 
-  let alertType = (txt: string) => {
+  const alertType = (txt: string) => {
     if (txt == 'warning') return 'WARNING'
     if (txt == 'error') return 'CRITICAL'
     if (txt == 'note') return 'NOTE'
@@ -103,7 +103,7 @@ function summarizeTidy(buildIssues: BuildIssue[]) {
   }
 
   const textRe = /([^ ]+: )?((\w+): )(.*)/y
-  let generateAlert = (issue: BuildIssue): SummaryAlert => {
+  const generateAlert = (issue: BuildIssue): SummaryAlert => {
     if (issue.text) {
       textRe.lastIndex = 0
       const textMatch = reStickyMatch(textRe, issue.text)
@@ -115,8 +115,8 @@ function summarizeTidy(buildIssues: BuildIssue[]) {
     return { type: issue.isError ? 'CRITICAL' : 'WARNING', text: '' }
   }
 
-  let contextLineRe = /( +(\d+ )?\|[^\n]*\n?)+/y
-  let cleanupPostContext = (postContext: string | undefined) => {
+  const contextLineRe = /( +(\d+ )?\|[^\n]*\n?)+/y
+  const cleanupPostContext = (postContext: string | undefined) => {
     if (!postContext) {
       return postContext
     }

@@ -1,11 +1,14 @@
 {
-  "extends": "../../tsconfig.eslint.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@local/config/tsconfig-eslint",
+  "exclude": ["dist", "node_modules"],
   "include": [
     "__fixtures__",
     "__tests__",
     "src",
     "eslint.config.mjs",
-    "jest.config.mjs"
-  ],
-  "exclude": ["lib", "dist", "node_modules"]
+    "jest.config.mjs",
+    "prettier.config.mjs",
+    "rollup.config.mjs"
+  ]
 }

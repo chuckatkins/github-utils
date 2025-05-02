@@ -1,8 +1,3 @@
-import baseConfig from '../../jest.config.mjs'
+import { default as config } from '@local/config/jest'
 
-export default {
-  ...baseConfig,
-  rootDir: '.',
-  testMatch: ['**/*.test.ts'],
-  testPathIgnorePatterns: ['/dist/', '/lib/', '/node_modules/'],
-}
+export default config
