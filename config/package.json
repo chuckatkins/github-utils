@@ -1,0 +1,20 @@
+{
+  "name": "@local/config",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint.config.mjs",
+    "./jest": "./jest.config.mjs",
+    "./prettier": "./prettier.config.mjs",
+    "./rollup": "./rollup.config.mjs",
+    "./tsconfig": "./tsconfig.base.json",
+    "./tsconfig-eslint": "./tsconfig.eslint.base.json",
+    "./tsconfig-test": "./tsconfig.test.base.json"
+  },
+  "scripts": {
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix .",
+    "format": "npx prettier --ignore-path ../.prettierignore --check .",
+    "format:fix": "npx prettier --ignore-path ../.prettierignore --write ."
+  }
+}

@@ -12,15 +12,14 @@
     "@actions/tool-cache": "^2.0.2"
   },
   "scripts": {
-    "clean": "../../scripts/npm/clean.sh",
-    "distclean": "npm run clean && ../../scripts/npm/distclean.sh",
-    "build": "tsc --project tsconfig.json",
-    "package": "ncc build src/index.ts --out dist",
-    "lint": "../../scripts/npm/lint.sh .",
-    "lint:fix": "../../scripts/npm/lint.sh --fix .",
-    "format": "../../scripts/npm/format.sh --check .",
-    "format:fix": "../../scripts/npm/format.sh --write .",
-    "test": "../../scripts/npm/test.sh",
-    "test:watch": "../../scripts/npm/test.sh --watch"
+    "clean": "npx rimraf dist .eslintcache .cache .jest coverage",
+    "distclean": "npm run clean && npx rimraf node_modules package-lock.json",
+    "build": "npx rollup --config rollup.config.mjs",
+    "format": "npx prettier --ignore-path ../../.prettierignore --check .",
+    "format:fix": "npx prettier --ignore-path ../../prettierignore --write .",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix .",
+    "package": "npm run format:fix && npm run lint:fix && npm run build",
+    "test": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 npx jest --no-cache"
   }
 }

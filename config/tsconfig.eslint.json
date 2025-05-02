@@ -1,11 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@local/config/tsconfig-eslint",
+  "extends": "./tsconfig.eslint.base.json",
   "exclude": ["dist", "node_modules"],
   "include": [
-    "__fixtures__",
-    "__tests__",
-    "src",
     "eslint.config.mjs",
     "jest.config.mjs",
     "prettier.config.mjs",

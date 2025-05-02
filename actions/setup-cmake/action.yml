@@ -37,17 +37,17 @@ outputs:
     value: ${{ steps.propagate.outputs.ctest }}
   cmake_source_dir:
     description: >
-      Path to the source directory to pass to
-      `cmake -S <source_dir> -B <binary_dir>`.
+      Path to the source directory to pass to `cmake -S <source_dir> -B
+      <binary_dir>`.
     value: ${{ steps.propagate.outputs.source_dir }}
   cmake_binary_dir:
     description: >
-      Path to the binary directory to pass to
-      `cmake -S <source_dir> -B <binary_dir>`.
+      Path to the binary directory to pass to `cmake -S <source_dir> -B
+      <binary_dir>`.
     value: ${{ steps.propagate.outputs.build_dir }}
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Install CMake and Ninja into the tool-cache
       id: install
